@@ -7,7 +7,7 @@ tst_list_3 = ['a', 'b', 'abc']
 
 
 def test_1():
-    assert tst_list.index(55) == 1
+    assert tst_list.index(55) == 3
 
 
 def test_2():
@@ -15,14 +15,18 @@ def test_2():
 
 
 def test_3():
+    assert type(tst_list[5]) == str
+
+
+def test_4():
     tst_list.clear()
     assert tst_list == []
 
 
-def test_4():
-    assert 1 == 1
-
-
 @pytest.mark.parametrize("test_input", [tst_list, tst_list_2, tst_list_3])
 def test_5(test_input):
-    assert 1 == 1
+    test_input.append(33)
+    test_input.reverse()
+    print(test_input)
+    assert test_input.index(33) == len(test_input)-1
+
